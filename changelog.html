@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isle changelog</title>
+<meta name="description" content="Every Isle release, what changed in it, and why.">
+<meta name="theme-color" content="#e7e9ec">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Inter+Tight:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/isle.css">
+</head>
+<body data-page="changelog">
+
+<nav class="bar" aria-label="Main">
+  <div class="bar__side">
+    <a class="wordmark" href="index.html">
+      <svg class="wordmark__dots" width="13" height="13" viewBox="0 0 1024 1024" aria-hidden="true" fill="currentColor">
+        <circle cx="302" cy="302" r="72"/><circle cx="512" cy="302" r="72"/><circle cx="722" cy="302" r="72"/>
+        <circle cx="302" cy="512" r="72"/><circle cx="512" cy="512" r="72"/><circle cx="722" cy="512" r="72"/>
+        <circle cx="302" cy="722" r="72"/><circle cx="512" cy="722" r="72"/><circle cx="722" cy="722" r="72"/>
+      </svg>
+      Isle
+    </a>
+  </div>
+  <div class="bar__side bar__side--right">
+    <a href="install.html">Install</a>
+    <a href="changelog.html" aria-current="page">Changelog</a>
+    <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
+    <span class="bar__version">0.2.4</span>
+  </div>
+</nav>
+
+<main>
+
+  <header class="page-head wrap" data-marker="done">
+    <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
+    <h1>Eight releases so far.</h1>
+    <p class="lede">
+      Isle checks for updates on launch and installs them itself, verified against a
+      signed manifest. Nothing here needs a re-download once you're running.
+    </p>
+  </header>
+
+  <section class="chapter chapter--open wrap">
+
+    <article class="release" data-marker="done">
+      <div>
+        <div class="release__version">0.2.4</div>
+        <div class="release__date">31 August 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>The mode switch moved into the menu bar.</strong> Music, Claude Code or Both, mirroring the picker in Settings — change it in either place and both agree.</li>
+          <li>The README opens with a capture of the island working, so the first thing a visitor sees is the thing the project is about.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="waitingInput">
+      <div>
+        <div class="release__version">0.2.3</div>
+        <div class="release__date">31 August 2026</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--tint); margin-top: 0">
+          <li><strong>One waveform, one size.</strong> The strip narrowed from 26 to 22 when the album shared the island, and because bar thickness came from the strip's width, it quietly drew the bars at a different weight too. The same waveform was being rendered as two objects; now it's one.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="working">
+      <div>
+        <div class="release__version">0.2.2</div>
+        <div class="release__date">31 August 2026</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--tint); margin-top: 0">
+          <li><strong>"Waiting" can be turned off.</strong> It counted as Claude activity, so the moment Claude handed the turn back the island split and the music side shrank. Waiting is the one state you already know about — you are the one being waited on. Off, it stays ambient and the island keeps the music. On by default.</li>
+          <li><strong>The collapsed waveform got its full height.</strong> At 14pt inside a 32pt notch, next to a 22pt thumbnail, it read as a ripple under the artwork rather than its counterpart. Silence is unchanged — a taller frame only moves the loud end.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="waitingInput">
+      <div>
+        <div class="release__version">0.2.1</div>
+        <div class="release__date">31 August 2026</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--tint); margin-top: 0">
+          <li><strong>The waveform keeps running while the menu bar item is open.</strong> Opening the menu used to take the tracking with it, so the equalizer froze mid-track until you dismissed it.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="working">
+      <div>
+        <div class="release__version">0.2.0</div>
+        <div class="release__date">31 August 2026</div>
+      </div>
+      <div>
+        <h4>Claude bridge</h4>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>One status file per session.</strong> The old shared file was last-writer-wins, so a background session's <em>Stop</em> wiped the state of the session you were watching.</li>
+          <li><strong>Urgency ranking.</strong> A failed or blocked session outranks one merely working, regardless of write order.</li>
+          <li><strong>Interrupts no longer freeze the island.</strong> ESC fires no hook, leaving a <em>working</em> record behind; that record is now retired once the CLI record and the transcript both agree the turn ended.</li>
+          <li><strong>Stopped guessing at silence.</strong> The no-response and staleness inferences are gone — Isle has no signal that separates a long think from a stall, so it no longer implies one.</li>
+          <li><strong>API failures land properly.</strong> <code>StopFailure</code> is read from the field it actually sends, so rate limits and server errors get their own markers.</li>
+        </ul>
+
+        <h4>Performance</h4>
+        <ul class="feature-list" style="--accent: var(--green); margin-top: 0">
+          <li>The island stopped redrawing itself thirty times a second, and the waveform moved off the redraw path entirely.</li>
+          <li>The waveform reads the music rather than the system volume — and stopped burning CPU doing it.</li>
+          <li>A slow audio system no longer delays launch, and the audio tap is given a moment to come down on quit.</li>
+        </ul>
+
+        <h4>Fixes</h4>
+        <ul class="feature-list" style="--accent: var(--grey); margin-top: 0">
+          <li>A long track title actually scrolls now, and scrolls all the way through instead of stopping short.</li>
+          <li>Rewritten README for people installing Isle rather than people handing it off, and an MIT license.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="waitingInput">
+      <div>
+        <div class="release__version">0.1.3</div>
+        <div class="release__date">29 August 2026</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--cyan); margin-top: 0">
+          <li><strong>The app icon lost its white border.</strong> Adopted Icon Composer's <code>.icon</code> format, a rounded full-bleed tile with the dot grid zoomed in.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="working">
+      <div>
+        <div class="release__version">0.1.2</div>
+        <div class="release__date">29 August 2026</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--cyan); margin-top: 0">
+          <li><strong>Self-updating.</strong> Isle checks on launch and on demand, and verifies each release against an Ed25519-signed manifest whose public half is compiled into the app.</li>
+          <li>Dot-grid icons throughout, notch polish, and the release tooling that signs a build before it can be published.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="done">
+      <div>
+        <div class="release__version">0.1.1</div>
+        <div class="release__date">29 August 2026</div>
+        <div class="release__tag" style="color: var(--quiet)">First release</div>
+      </div>
+      <div>
+        <h4>The island</h4>
+        <ul class="feature-list" style="--accent: var(--tint); margin-top: 0">
+          <li>Borderless, non-activating overlay hugging the camera housing, with hover-expand, spring animation, and hit-testing clipped to the drawn shape.</li>
+          <li>Live media sync scoped to Spotify: artwork, marquee title, scrubbable playbar, and an audio-reactive waveform.</li>
+          <li>Shuffle and repeat, read from the Spotify poll and optional in Settings.</li>
+        </ul>
+
+        <h4>Claude Code</h4>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li>The hook bridge, the mode archetype (music, Claude, or both), and the designable dot-matrix markers.</li>
+          <li>Distinct error markers per error kind, a live compacting animation, and dismissable alert panels with a pinned mode as an option.</li>
+          <li>The island clears itself when a session ends, and reverts a question that goes unanswered.</li>
+        </ul>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="chapter chapter--tight wrap">
+    <div class="split split--even split--center">
+      <div>
+        <h2>Already installed?</h2>
+        <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
+      </div>
+      <div class="hero__actions" style="margin-top: 0">
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.2.4</a>
+        <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__note footer__note--bare">
+      <span>© 2026 Matthew Hamilton · MIT</span>
+      <span><a href="index.html">Back to the overview</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/isle.js"></script>
+</body>
+</html>
