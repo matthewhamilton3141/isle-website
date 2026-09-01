@@ -38,9 +38,19 @@
   --cyan: #32ade6;
   --grey: #8e8e93;
 
-  /* Stand-in for the artwork tint the app pulls from album art. */
-  --tint: #4d6bff;
-  --tint-dark: #6e8bff;
+  /* Stand-in for the artwork tint the app pulls from album art. The three
+     stops are the demo cover, and isle.js reads them straight out of here for
+     the waveform and the palette markers — so this is the only place the
+     artwork palette is written down. */
+  --art-1: #37d67a;
+  --art-2: #25b6c9;
+  --art-3: #4a7dff;
+
+  /* The accent is the artwork palette, adjusted for text rather than for
+     glyphs: --art-3 darkened enough to read on the sheet, --art-2 lifted
+     enough to read on black. */
+  --tint: #2f6fe0;
+  --tint-dark: #6fc9e6;
 
   --bar-h: 38px;
   --cutout-w: 190px;      /* the camera housing itself */
@@ -382,7 +392,7 @@ code {
   flex: none;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(140deg, #5d7bff 0%, #8f5bff 52%, #ff6ba8 100%);
+  background: linear-gradient(140deg, var(--art-1) 0%, var(--art-2) 52%, var(--art-3) 100%);
 }
 
 .art::after {
@@ -518,7 +528,7 @@ code {
   align-content: center;
   color: var(--bone-mute);
   background:
-    radial-gradient(120% 90% at 50% -10%, rgba(77, 107, 255, 0.16), transparent 62%),
+    radial-gradient(120% 90% at 50% -10%, rgba(55, 214, 122, 0.14), transparent 62%),
     var(--bezel);
 }
 
@@ -682,17 +692,6 @@ code {
 
 .marker__detail { font-size: 13px; color: var(--bone-mute); line-height: 1.45; }
 
-.marker__tag {
-  margin-top: auto;
-  font-family: var(--mono);
-  font-size: 8.5px;
-  font-weight: 500;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.34);
-  border-top: 1px solid var(--hair-dark);
-  padding-top: 13px;
-}
 
 /* --- Tables -------------------------------------------------------------- */
 
@@ -950,11 +949,11 @@ details .code { margin-left: 26px; }
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(77, 107, 255, 0.4);
+  text-decoration-color: rgba(47, 111, 224, 0.42);
 }
 
 .prose a:hover, .card p a:hover, details p a:hover { text-decoration-color: var(--tint); }
-.dark .prose a { color: var(--tint-dark); text-decoration-color: rgba(110, 139, 255, 0.45); }
+.dark .prose a { color: var(--tint-dark); text-decoration-color: rgba(111, 201, 230, 0.45); }
 
 [id] { scroll-margin-top: calc(var(--bar-h) + 24px); }
 

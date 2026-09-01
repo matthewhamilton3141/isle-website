@@ -13,14 +13,15 @@ python3 -m http.server 8000
 
 | File | What's on it |
 |---|---|
-| `index.html` | Hero and the recording, the two live activities, how the media layer works, the marker catalogue, requirements |
+| `index.html` | The manual: the recording, then six numbered sections — installing, what it shows, the marker set, how it reads your machine, requirements, updates |
 | `install.html` | The four install steps, the quarantine explanation, permissions, troubleshooting, building from source |
 | `changelog.html` | Release history |
 
 ## Assets
 
-- `assets/isle.css` — all styles, tokens at the top
-- `assets/isle.js` — the island replica, the recording, and the marker catalogue
+- `assets/isle.css` — the shared parts: tokens, the bar, the island, markers, code blocks, tables
+- `assets/manual.css` — the layout of `index.html`, and nothing else
+- `assets/isle.js` — the island replica, the mode previews, the recording, and the marker catalogue
 - `assets/favicon.svg` — the app's 3×3 dot mark
 
 ## The design
@@ -35,13 +36,17 @@ The replica opens once and never again. On load it widens out of the camera
 housing (`--cutout-w`) to its collapsed width, on the same spring the app uses,
 with the hole in the bar opening alongside it because they are the same path —
 then it holds still. There is no panel, no transport and no hover state: the
-recording is where you watch it move. What it does do is follow the page: each
-section names a state in `data-marker`, and the marker and its word change as
-you pass.
-Everything else is
-cool aluminium; the marker catalogue and the Claude field notes are the one
-place the sheet gives way to black, because that is the ground markers live on
-in the app.
+recording is where you watch it move.
+
+The three modes in §2 are drawn the same way — `renderModes()` builds a notch at
+rest per `data-mode`, out of the same parts. On its own an activity straddles the
+camera; run both and each takes a side. Claude alone has no cover to tint from,
+so its palette markers fall back to fixed colours, amber and yellow.
+
+The layout is a document: a sticky contents rail on the left that marks the
+section you are in, numbered sections on the right, and the whole thing aligned
+to the left margin rather than centred — the bar is the exception, since the
+notch has to stay in the middle of the window.
 
 Type is Archivo (display, run wide), Inter Tight (body) and Martian Mono
 (labels, state names, data). Code is set in the system mono — SF Mono on the
@@ -115,22 +120,24 @@ blocks is the site's own and is safe to edit.
 The site draws four of the app's sixteen states — working, question, waiting for
 input, done — listed in `SHOWN` in `assets/isle.js` along with the word the
 island puts beside each one. (`working` reads *Thinking…* there: it is the app's
-word for the state, in the site's voice.) Those four are also the site's
-structure: every section is typed by one of them, shown in the label above its
-heading. To show another state, add a line to `SHOWN`; the design comes from the
-generated block. Pages point at a marker by key through `data-marker` (drives the
-island as you scroll past a section) and `data-dots` (a static grid inline in the
-page); the script fails if either points at a state `SHOWN` doesn't list.
+word for the state, in the site's voice.) To show another state, add a line to
+`SHOWN`; the design comes from the generated block. Pages point at a marker by
+key through `data-dots` (a static grid inline in the page) and `data-marker`
+(drives the island as you scroll past a section — `install.html` and
+`changelog.html` still use it); the script fails if either points at a state
+`SHOWN` doesn't list.
 
 ## Structure
 
 Three pages, and every one of them earns its own destination in the bar: the
-overview, the install steps, the changelog. Music and Claude Code are cards in
-`#activities` on the overview rather than pages of their own — they are what the
-product *is*, not somewhere you go.
+overview, the install steps, the changelog. Music and Claude Code are modes shown
+in §2 of the overview rather than pages of their own — they are what the product
+*is*, not somewhere you go.
 
-The overview runs: recording, the two activities, how the media layer works, the
-marker set, requirements, download.
+The overview is numbered 1–6 and installing comes first, because the one thing a
+visitor has to know before anything else is that macOS will call the app damaged
+and that one command fixes it. The download button in the rail points at §1
+rather than straight at the disk image for the same reason.
 
 ## Deploying
 

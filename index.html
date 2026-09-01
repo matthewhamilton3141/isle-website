@@ -14,8 +14,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Inter+Tight:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/isle.css">
+<link rel="stylesheet" href="assets/manual.css">
 </head>
-<body data-page="index">
+<body data-page="manual">
 
 <nav class="bar" aria-label="Main">
   <div class="bar__side">
@@ -36,209 +37,238 @@
   </div>
 </nav>
 
-<main>
+<main class="mn">
 
-  <!-- Hero ------------------------------------------------------------- -->
-  <header class="hero wrap" data-marker="working">
-    <div class="hero__layout">
-      <h1>Stop staring at your terminal. Let your notch do the work for you.</h1>
+  <!-- Rail --------------------------------------------------------------- -->
+  <aside class="mn__rail">
+    <h2>Contents</h2>
+    <ul class="mn__toc">
+      <li><a href="#s1"><span>1</span>Installing</a></li>
+      <li><a href="#s2"><span>2</span>What it shows</a></li>
+      <li><a href="#s3"><span>3</span>The marker set</a></li>
+      <li><a href="#s4"><span>4</span>How it reads your machine</a></li>
+      <li><a href="#s5"><span>5</span>Requirements</a></li>
+      <li><a href="#s6"><span>6</span>Updates and source</a></li>
+    </ul>
+    <p class="mn__meta">
+      Isle 0.2.4<br>macOS 14+ · universal<br>2.3 MB · MIT
+    </p>
+    <div class="mn__dl">
+      <a class="btn btn--solid" href="#s1">Download 0.2.4</a>
+      <a class="btn btn--line" href="install.html">Full install guide</a>
+    </div>
+  </aside>
 
-      <div class="hero__col">
-        <p class="lede">
-          Isle fills the dead space around the camera. It shows what's playing and
-          moves with the actual audio, and it reports what Claude Code is doing —
-          opening on its own when Claude needs you.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.2.4</a>
-          <a class="btn btn--line" href="install.html">Read the install steps</a>
+  <!-- Body --------------------------------------------------------------- -->
+  <div class="mn__body">
+
+    <div class="mn__lead">
+      <h1>A Dynamic Island for the MacBook notch.</h1>
+      <p>
+        Isle fills the dead space around the camera: what's playing, moving with the
+        actual audio, and what Claude Code is doing — opening on its own when Claude
+        needs you. This page is the reference; the island in the bar above is live.
+      </p>
+      <figure class="demo" style="margin-top: 26px">
+        <div class="demo__stage">
+          <video class="demo__video" src="assets/demo.mp4" poster="assets/demo.jpg"
+                 width="1298" height="540"
+                 autoplay muted loop playsinline preload="metadata"></video>
+          <div class="demo__standin">
+            <span data-dots="working" data-dots-size="lg" aria-hidden="true"></span>
+            <p>Recording pending</p>
+          </div>
         </div>
-        <p class="hero__fine">
-          Code-signed but not notarised, so macOS quarantines the download and claims
-          the app is damaged. It isn't. Clear the flag once, on first install:
-        </p>
-        <pre class="code"><span class="prompt">$ </span>xattr <span class="flag">-dr</span> com.apple.quarantine <span class="path">/Applications/Isle.app</span></pre>
-        <p class="hero__fine"><a href="install.html#quarantine">What that command does →</a></p>
-      </div>
+        <figcaption class="demo__caption">Fig. 1 — twenty seconds, unedited. 14-inch MacBook Pro.</figcaption>
+      </figure>
     </div>
 
-    <!-- The recording -------------------------------------------------- -->
-    <figure class="demo">
-      <div class="demo__stage">
-        <video class="demo__video" src="assets/demo.mp4" poster="assets/demo.jpg"
-               width="1298" height="540"
-               autoplay muted loop playsinline preload="metadata"></video>
-        <div class="demo__standin">
-          <span data-dots="working" data-dots-size="lg" aria-hidden="true"></span>
-          <p>Recording pending</p>
-        </div>
-      </div>
-      <figcaption class="demo__caption">
-        Twenty seconds, unedited: the collapsed island with music and Claude either side of
-        the camera, the panel opening on a turn, and a question arriving. Recorded on a
-        14-inch MacBook Pro.
-      </figcaption>
-    </figure>
-
-  </header>
-
-  <!-- Markers ---------------------------------------------------------- -->
-  <section class="chapter dark" id="markers" data-marker="needsQuestion">
-    <div class="wrap">
-      <div class="state"><span data-dots="needsQuestion" aria-hidden="true"></span>The marker set</div>
-      <div class="split split--end">
-        <h2>Four states,<br>five dots by five.</h2>
-        <div>
-          <p class="lede" style="max-width: 50ch">
-            Each one is a lit pattern, a colour and a motion. Pick a marker and it
-            takes over the island at the top of this page — the one that needs you
-            opens it.
-          </p>
-          <p class="prose" style="margin-top: 16px; font-size: 15px; max-width: 50ch">
-            Markers are designable in the app itself, under <strong>Marker Editor</strong>
-            in the menu bar. The patterns here are the shipped defaults, read straight
-            out of the app's source.
-          </p>
-        </div>
-      </div>
-      <div id="marker-catalogue"></div>
-    </div>
-  </section>
-
-  <!-- Updates + source -------------------------------------------------- -->
-  <section class="chapter wrap" id="source" data-marker="working">
-    <div class="state"><span data-dots="working" aria-hidden="true"></span>Keeping it current</div>
-    <div class="grid-2">
-      <article class="card">
-        <div class="card__head"><span data-dots="done" aria-hidden="true"></span><h3>Updates</h3></div>
+    <section class="sec" id="s1">
+      <h2><em>1</em> Installing</h2>
+      <div class="sec__in">
         <p>
-          Isle checks for updates on launch and on demand. Each release is published
-          as a disk image alongside a <code>latest.json</code> manifest signed with an
-          Ed25519 key whose public half is compiled into the app, so an unsigned or
-          mismatched update is rejected before installation.
+          A private framework and AppleScript automation rule out the Mac App Store, so
+          Isle ships as a disk image. Three steps, and the third is the one worth reading
+          before you start.
         </p>
-      </article>
 
-      <article class="card">
-        <div class="card__head"><span data-dots="working" aria-hidden="true"></span><h3>Build from source</h3></div>
-        <p>Locally built copies are never quarantined, so the <code>xattr</code> step does not apply.</p>
-        <pre class="code" data-copy="git clone https://github.com/matthewhamilton3141/isle.git
-cd isle
-./scripts/build-mediaremote-adapter.sh
-open Isle.xcodeproj"><span class="prompt">$ </span>git clone \
-    https://github.com/matthewhamilton3141/isle.git
-<span class="prompt">$ </span>cd isle
-<span class="comment"># one-time: build the bundled now-playing bridge</span>
-<span class="prompt">$ </span>./scripts/build-mediaremote-adapter.sh
-<span class="prompt">$ </span>open Isle.xcodeproj  <span class="comment"># then ⌘R</span></pre>
-      </article>
-    </div>
-  </section>
-
-  <!-- Requirements ----------------------------------------------------- -->
-  <section class="chapter wrap" id="requirements" data-marker="done">
-    <div class="state"><span data-dots="done" aria-hidden="true"></span>Before you download</div>
-    <div class="split">
-      <div>
-        <h2>What it needs.</h2>
-        <p class="lede" style="margin-top: 24px">
-          Isle uses a private framework and AppleScript automation, which rules out
-          the Mac App Store. It ships as a disk image and updates itself from there.
-        </p>
+        <ol class="mn__steps">
+          <li>
+            <b>Download the disk image.</b>
+            <div class="mn__get">
+              <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/download/v0.2.4/Isle-0.2.4.dmg">Download Isle-0.2.4.dmg</a>
+              <span>2.3 MB · universal · macOS 14+</span>
+            </div>
+          </li>
+          <li><b>Open it and drag Isle into Applications.</b></li>
+          <li>
+            <b>Clear the quarantine flag, once.</b>
+            <p>
+              Isle is code-signed, but not with a paid Apple Developer ID. macOS therefore
+              quarantines the download and refuses to open it, usually reporting
+              <em>"Isle is damaged and can't be opened."</em> It isn't — that message
+              describes the missing notarisation, not the file. This removes the flag:
+            </p>
+            <pre class="code"><span class="prompt">$ </span>xattr <span class="flag">-dr</span> com.apple.quarantine <span class="path">/Applications/Isle.app</span></pre>
+            <p>
+              Isle then opens normally, and it does not recur: in-app updates are not
+              quarantined, and a build you compile yourself never carries the flag.
+              <a href="install.html#quarantine">What that command actually does →</a>
+            </p>
+          </li>
+        </ol>
       </div>
-      <div>
+    </section>
+
+    <section class="sec" id="s2">
+      <h2><em>2</em> What it shows</h2>
+      <div class="sec__in">
+        <p>
+          Three modes, switched from the menu bar or from Settings. Only the subsystems
+          the active mode needs are started, so a Claude-only install never asks Spotify
+          for anything.
+        </p>
+
+        <div class="modes">
+          <div class="mode">
+            <div class="mode__plate"><div class="np" data-mode="music"></div></div>
+            <div>
+              <h3>Music</h3>
+              <p>
+                Album art one side of the camera, the waveform the other — reading
+                Spotify's own output, not the system volume. Open it for the transport
+                and a scrubbable playbar.
+              </p>
+            </div>
+          </div>
+
+          <div class="mode">
+            <div class="mode__plate"><div class="np" data-mode="claude"></div></div>
+            <div>
+              <h3>Claude Code</h3>
+              <p>
+                The marker sits where the album art would be, with the state named on the
+                other side of the camera. No cover to tint from, so the palette markers
+                fall back to fixed colours: <strong>amber while building, yellow while
+                thinking</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div class="mode">
+            <div class="mode__plate"><div class="np" data-mode="both"></div></div>
+            <div>
+              <h3>Both</h3>
+              <p>
+                Each activity takes a side: art and waveform to the left of the camera,
+                marker and state to the right. Here there is a cover to tint from, so the
+                markers take its colours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="s3">
+      <h2><em>3</em> The marker set</h2>
+      <div class="sec__in">
+        <p>
+          Four of the app's sixteen states are drawn here. Each is a lit pattern, a
+          colour and a motion; select one to send it to the island above. They are
+          designable in the app under <strong>Marker Editor</strong> — these are the
+          shipped defaults, read out of its source.
+        </p>
+        <div id="marker-catalogue"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="s4">
+      <h2><em>4</em> How it reads your machine</h2>
+      <div class="sec__in">
+        <p>
+          Nothing is inferred. The textbook way to read now-playing is to load Apple's
+          private <code>MediaRemote</code> framework and ask it; around macOS 15.4 Apple
+          gated the read side behind an entitlement third-party apps cannot get, and the
+          call still succeeds — it just returns an empty dictionary.
+        </p>
+        <table class="table">
+          <thead><tr><th>What</th><th>Where it comes from</th></tr></thead>
+          <tbody>
+            <tr><td>Now playing</td><td>mediaremote-adapter, loading MediaRemote inside <code>/usr/bin/perl</code> — an Apple-signed binary that does hold the entitlement</td></tr>
+            <tr><td>Playback control</td><td>AppleScript to Spotify</td></tr>
+            <tr><td>The waveform</td><td>A Core Audio process tap on Spotify</td></tr>
+            <tr><td>Claude status</td><td>Hooks write one JSON file per session; Isle watches the directory</td></tr>
+            <tr><td>The panel</td><td>Created once at full size; only the contents animate, so it never fights the window server</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="s5">
+      <h2><em>5</em> Requirements</h2>
+      <div class="sec__in">
         <table class="table">
           <tbody>
             <tr><td>Operating system</td><td>macOS 14 Sonoma or newer</td></tr>
             <tr><td>Waveform</td><td>macOS 14.4 or newer, for the Core Audio process-tap API</td></tr>
             <tr><td>Music source</td><td>Spotify</td></tr>
             <tr><td>Claude source</td><td>Claude Code</td></tr>
-            <tr><td>Notch</td><td>Not required — on a Mac without one, Isle draws against the top edge</td></tr>
-            <tr><td>Building from source</td><td>Xcode 16 or newer</td></tr>
+            <tr><td>Notch</td><td>Not required — without one, Isle draws against the top edge</td></tr>
+            <tr><td>Building</td><td>Xcode 16 or newer</td></tr>
           </tbody>
         </table>
-        <div class="note" style="--accent: var(--amber); margin-top: 32px">
-          <h4>One command on first install</h4>
-          <p>
-            Isle is code-signed, but not with a paid Apple Developer ID, so macOS
-            quarantines the download and claims the app is damaged. It isn't — that
-            message describes the missing notarisation. Clearing the flag takes one
-            line, once. <a href="install.html#quarantine">The full explanation →</a>
-          </p>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Download --------------------------------------------------------- -->
-  <section class="chapter chapter--tight wrap" id="download">
-    <div class="split split--even split--center">
-      <div>
-        <h2>Put it in your Applications folder.</h2>
-        <p class="lede" style="margin-top: 20px">
-          Free and MIT licensed. Updates check on launch and install themselves,
-          verified against a signed manifest.
+    <section class="sec" id="s6">
+      <h2><em>6</em> Updates and source</h2>
+      <div class="sec__in">
+        <p>
+          Isle checks for updates on launch and on demand. Each release is published
+          alongside a <code>latest.json</code> manifest signed with an Ed25519 key whose
+          public half is compiled into the app, so an unsigned or mismatched update is
+          rejected before installation.
         </p>
+        <pre class="code" data-copy="git clone https://github.com/matthewhamilton3141/isle.git
+cd isle
+./scripts/build-mediaremote-adapter.sh
+open Isle.xcodeproj"><span class="prompt">$ </span>git clone https://github.com/matthewhamilton3141/isle.git
+<span class="prompt">$ </span>cd isle
+<span class="prompt">$ </span>./scripts/build-mediaremote-adapter.sh
+<span class="prompt">$ </span>open Isle.xcodeproj</pre>
+        <p>A locally built copy is never quarantined, so the <code>xattr</code> step does not apply.</p>
       </div>
-      <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.2.4</a>
-        <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle">Source on GitHub</a>
-      </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
+
+  <div class="mn__foot">
+    <span>© 2026 Matthew Hamilton · MIT · mediaremote-adapter BSD-3-Clause</span>
+    <span><a href="https://github.com/matthewhamilton3141/isle">Source on GitHub →</a></span>
+  </div>
 
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__grid">
-      <div>
-        <a class="wordmark" href="index.html" style="text-decoration: none">
-          <svg width="14" height="14" viewBox="0 0 1024 1024" aria-hidden="true" fill="currentColor">
-            <circle cx="302" cy="302" r="72"/><circle cx="512" cy="302" r="72"/><circle cx="722" cy="302" r="72"/>
-            <circle cx="302" cy="512" r="72"/><circle cx="512" cy="512" r="72"/><circle cx="722" cy="512" r="72"/>
-            <circle cx="302" cy="722" r="72"/><circle cx="512" cy="722" r="72"/><circle cx="722" cy="722" r="72"/>
-          </svg>
-          Isle
-        </a>
-        <p style="font-size: 14px; margin-top: 16px; max-width: 30ch; color: rgba(255,255,255,0.42)">
-          A Dynamic Island for the MacBook notch — for Spotify and Claude Code.
-        </p>
-      </div>
-      <div>
-        <h5>Product</h5>
-        <ul>
-          <li><a href="#markers">Markers</a></li>
-          <li><a href="#requirements">Requirements</a></li>
-          <li><a href="changelog.html">Changelog</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Install</h5>
-        <ul>
-          <li><a href="install.html">Install guide</a></li>
-          <li><a href="install.html#permissions">Permissions</a></li>
-          <li><a href="install.html#troubleshooting">Troubleshooting</a></li>
-          <li><a href="install.html#source">Build from source</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Credits</h5>
-        <ul>
-          <li><a href="https://github.com/ungive/mediaremote-adapter">mediaremote-adapter</a></li>
-          <li><a href="https://github.com/TheBoredTeam/boring.notch">boring.notch</a></li>
-          <li><a href="https://claude.com/claude-code">Claude Code</a></li>
-          <li><a href="https://github.com/matthewhamilton3141/isle/blob/main/LICENSE">MIT License</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__note">
-      <span>© 2026 Matthew Hamilton · MIT</span>
-      <span>mediaremote-adapter is BSD-3-Clause. boring.notch is credited as prior art for technique; no code from it is used.</span>
-    </div>
-  </div>
-</footer>
-
 <script src="assets/isle.js"></script>
+<script>
+/* The rail marks where you are. Nothing else on the page depends on it. */
+(function () {
+  var links = [].slice.call(document.querySelectorAll(".mn__toc a"));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  if (!secs.length || !secs[0]) return;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a, i) {
+        a.setAttribute("aria-current", secs[i] === e.target ? "true" : "false");
+      });
+    });
+  }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+
+  secs.forEach(function (s) { if (s) io.observe(s); });
+})();
+</script>
 </body>
 </html>
