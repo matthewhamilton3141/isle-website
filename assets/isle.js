@@ -58,9 +58,12 @@
 
   /* The app tints its `palette` markers and its waveform from the album
      artwork. The demo cover is drawn rather than decoded, so these are the
-     stops of the gradient `.art` paints — and everything the app would take
-     from artwork is taken from them here. */
-  var ART = ["#5d7bff", "#8f5bff", "#ff6ba8"];
+     stops of the gradient `.art` paints — read from the same custom properties
+     the gradient uses, so the two can't drift apart. */
+  var ART = ["--art-1", "--art-2", "--art-3"].map(function (name, i) {
+    var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    return /^#[0-9a-f]{6}$/i.test(v) ? v : ["#37d67a", "#25b6c9", "#4a7dff"][i];
+  });
 
   var ART_RGB = ART.map(function (h) {
     return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
@@ -407,11 +410,6 @@
         '<div class="marker__detail">' + m.detail + "</div>";
       card.appendChild(body);
 
-      var tag = document.createElement("div");
-      tag.className = "marker__tag";
-      tag.textContent = m.anim;
-      card.appendChild(tag);
-
       card.addEventListener("click", function () {
         host.querySelectorAll(".marker").forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
         card.setAttribute("aria-pressed", "true");
@@ -423,6 +421,106 @@
     });
 
     host.appendChild(grid);
+  }
+
+  /* --- Mode previews -----------------------------------------------------
+     The three shapes the island takes, drawn rather than described: the same
+     notch path and the same parts as the live one, at rest.
+
+     Claude on its own has no cover to tint from, so its palette markers fall
+     back to fixed colours — amber while building, yellow while thinking.
+     ---------------------------------------------------------------------- */
+
+  var MODE_FALLBACK = { building: "#ff9f0a", thinking: "#ffd60a" };
+
+  function npSide(parts) {
+    var wrap = document.createElement("div");
+    wrap.className = "np__side";
+    parts.forEach(function (p) { wrap.appendChild(p); });
+    return wrap;
+  }
+
+  function npArt() {
+    var s = document.createElement("span");
+    s.className = "art";
+    return s;
+  }
+
+  function npWave() {
+    var s = document.createElement("span");
+    s.className = "wave";
+    s.dataset.wave = "6";
+    s.dataset.waveHeight = "12";
+    return s;
+  }
+
+  function npGlyph(colour) {
+    var g = buildDots("working");
+    if (colour) {
+      g.style.color = colour;
+      for (var i = 0; i < g.children.length; i++) g.children[i].style.color = colour;
+    }
+    return g;
+  }
+
+  function npWord(colour, text) {
+    var s = document.createElement("span");
+    s.className = "np__word";
+    s.textContent = text;
+    if (colour) s.style.color = colour;
+    return s;
+  }
+
+  /* On its own, an activity straddles the camera — art one side, waveform the
+     other; marker one side, the state's name the other. Run both and each
+     activity takes a side of its own instead. */
+  var MODE_SIDES = {
+    music: function () {
+      return [npSide([npArt()]), npSide([npWave()])];
+    },
+    claude: function () {
+      var y = MODE_FALLBACK.thinking;
+      return [npSide([npGlyph(y)]), npSide([npWord(y, "Thinking\u2026")])];
+    },
+    both: function () {
+      return [
+        npSide([npArt(), npWave()]),
+        npSide([npGlyph(null), npWord(null, "Thinking\u2026")])
+      ];
+    }
+  };
+
+  function renderModes() {
+    document.querySelectorAll("[data-mode]").forEach(function (host) {
+      var build = MODE_SIDES[host.dataset.mode];
+      if (!build) return;
+
+      var w = host.dataset.mode === "both" ? 356 : 268;
+      var h = 38;
+
+      var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("class", "np__shape");
+      svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+      svg.setAttribute("aria-hidden", "true");
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("fill", "var(--bezel)");
+      path.setAttribute("d", notchPath(w, h, SWIFT.notch.topCornerRadius, SWIFT.notch.bottomCornerRadius, w));
+      svg.appendChild(path);
+
+      var sides = build();
+      var row = document.createElement("div");
+      row.className = "np__row";
+      row.appendChild(sides[0]);
+
+      var cam = document.createElement("span");
+      cam.className = "camera";
+      row.appendChild(cam);
+      row.appendChild(sides[1]);
+
+      host.style.setProperty("--np-w", w + "px");
+      host.appendChild(svg);
+      host.appendChild(row);
+    });
   }
 
   /* --- Section-driven island state --------------------------------------- */
@@ -479,6 +577,7 @@
     });
 
     var island = initIsland();
+    renderModes();   // adds its own waveforms, so it runs before they are wired
 
     var waves = [];
     document.querySelectorAll("[data-wave]").forEach(function (el) {
