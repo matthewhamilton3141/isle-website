@@ -7,9 +7,20 @@
 <meta name="description" content="Isle turns the dead space around the MacBook camera into a live island: what's playing in Spotify, with a real audio waveform, and what Claude Code is doing — opening on its own when Claude needs you.">
 <meta name="theme-color" content="#e7e9ec">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://islenotch.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Isle">
+<meta property="og:url" content="https://islenotch.vercel.app/">
 <meta property="og:title" content="Isle — a Dynamic Island for the MacBook notch">
 <meta property="og:description" content="Now playing and Claude Code status, in the notch you already have. Free, MIT licensed, macOS 14+.">
-<meta property="og:type" content="website">
+<meta property="og:image" content="https://islenotch.vercel.app/assets/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A Dynamic Island for the MacBook notch. Now playing and Claude Code status, in the notch you already have.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Isle — a Dynamic Island for the MacBook notch">
+<meta name="twitter:description" content="Now playing and Claude Code status, in the notch you already have. Free, MIT licensed, macOS 14+.">
+<meta name="twitter:image" content="https://islenotch.vercel.app/assets/card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Inter+Tight:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,7 +44,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.3.1</span>
+    <span class="bar__version">0.3.2</span>
   </div>
 </nav>
 
@@ -51,10 +62,10 @@
       <li><a href="#s6"><span>6</span>Updates and source</a></li>
     </ul>
     <p class="mn__meta">
-      Isle 0.3.1<br>macOS 14+ · universal<br>3.2 MB · MIT
+      Isle 0.3.2<br>macOS 14+ · universal<br>3.3 MB · MIT
     </p>
     <div class="mn__dl">
-      <a class="btn btn--solid" href="#s1">Download 0.3.1</a>
+      <a class="btn btn--solid" href="#s1">Download 0.3.2</a>
       <a class="btn btn--line" href="install.html">Full install guide</a>
     </div>
   </aside>
@@ -96,8 +107,8 @@
           <li>
             <b>Download the disk image.</b>
             <div class="mn__get">
-              <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/download/v0.3.1/Isle-0.3.1.dmg">Download Isle-0.3.1.dmg</a>
-              <span>3.2 MB · universal · macOS 14+</span>
+              <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/download/v0.3.2/Isle-0.3.2.dmg">Download Isle-0.3.2.dmg</a>
+              <span>3.3 MB · universal · macOS 14+</span>
             </div>
           </li>
           <li><b>Open it and drag Isle into Applications.</b></li>
@@ -197,7 +208,8 @@
           <tbody>
             <tr><td>Now playing</td><td>mediaremote-adapter, loading MediaRemote inside <code>/usr/bin/perl</code> — an Apple-signed binary that does hold the entitlement</td></tr>
             <tr><td>Playback control</td><td>AppleScript to Spotify</td></tr>
-            <tr><td>The waveform</td><td>A Core Audio process tap on Spotify</td></tr>
+            <tr><td>The waveform</td><td>A Core Audio process tap on Spotify — only when set to Live; Animated never listens</td></tr>
+            <tr><td>Device batteries</td><td>IOBluetooth for the connect, then one <code>system_profiler</code> read for the level</td></tr>
             <tr><td>Claude status</td><td>Hooks write one JSON file per session; Isle watches the directory</td></tr>
             <tr><td>The panel</td><td>Created once at full size; only the contents animate, so it never fights the window server</td></tr>
           </tbody>
