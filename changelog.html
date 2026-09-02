@@ -43,7 +43,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html" aria-current="page">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.3.2</span>
+    <span class="bar__version">0.4.0</span>
   </div>
 </nav>
 
@@ -51,7 +51,7 @@
 
   <header class="page-head wrap" data-marker="done">
     <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
-    <h1>Eleven releases so far.</h1>
+    <h1>Twelve releases so far.</h1>
     <p class="lede">
       Isle checks for updates on launch and installs them itself, verified against a
       signed manifest. Nothing here needs a re-download once you're running.
@@ -60,11 +60,27 @@
 
   <section class="chapter chapter--open wrap">
 
+    <article class="release" data-marker="working">
+      <div>
+        <div class="release__version">0.4.0</div>
+        <div class="release__date">2 September 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--green); margin-top: 0">
+          <li><strong>An Agenda face.</strong> With Calendar or Reminders on, the expanded panel gains a third face: today's date beside what's left of the day — events still to come or in progress and reminders due, each in its calendar's colour, four lines at a time with the rest scrolling. Clicking the date opens Calendar.</li>
+          <li><strong>Events and reminders borrow the island.</strong> The way a power event does: an event a few minutes before it starts, with the lead time yours to set, and a reminder as it comes due — then straight back. All-day events and date-only reminders are listed but never announced, declined invitations are skipped, and a moment found late after sleep is dropped rather than announced stale. Both switches default off, so an existing install is never prompted for Calendar access on the strength of an update; Setup offers them to a fresh one.</li>
+          <li><strong>A Pomodoro timer.</strong> Opt-in from Settings. A progress ring with the clock inside it, play, skip and reset, and a tally of the cycle; while it runs, the ring and the remaining time sit in the collapsed island beside the music. Breaks roll straight on; the next focus waits to be started. Lengths, intervals per cycle and the end-of-interval chime are all adjustable.</li>
+          <li>Settings gained a fixed sidebar, since it now has more pages than a single scroll could carry.</li>
+          <li><strong>Lighter at rest.</strong> The notch no longer redraws itself once a second while a track plays; the Spotify read relaxes to every third second when the panel is closed and the adapter is already reporting Spotify; the album cover is decoded off the main thread and only downloaded when it will be drawn; a paused Pomodoro stops ticking; and a calendar sync is one re-fetch rather than one per changed event.</li>
+        </ul>
+      </div>
+    </article>
+
     <article class="release" data-marker="waitingInput">
       <div>
         <div class="release__version">0.3.2</div>
         <div class="release__date">2 September 2026</div>
-        <div class="release__tag">Current</div>
       </div>
       <div>
         <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
@@ -238,7 +254,7 @@
         <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
       </div>
       <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.3.2</a>
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.0</a>
         <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
       </div>
     </div>
