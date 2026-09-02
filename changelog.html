@@ -29,7 +29,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html" aria-current="page">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.2.4</span>
+    <span class="bar__version">0.3.0</span>
   </div>
 </nav>
 
@@ -37,7 +37,7 @@
 
   <header class="page-head wrap" data-marker="done">
     <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
-    <h1>Eight releases so far.</h1>
+    <h1>Nine releases so far.</h1>
     <p class="lede">
       Isle checks for updates on launch and installs them itself, verified against a
       signed manifest. Nothing here needs a re-download once you're running.
@@ -46,11 +46,25 @@
 
   <section class="chapter chapter--open wrap">
 
+    <article class="release" data-marker="working">
+      <div>
+        <div class="release__version">0.3.0</div>
+        <div class="release__date">1 September 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>Lighter while paused.</strong> The waveform's audio tap now idles whenever nothing is playing, so a paused Spotify no longer keeps the system's audio engine cycling or Isle analysing silence. Pressing play brings it back in about 30 milliseconds.</li>
+          <li><strong>Power updates are two switches.</strong> Battery updates and device updates are independent in Settings, and a switch that is off stops the watching, not just the message.</li>
+          <li>Fixed a restart race that could leave the now-playing feed blank after the screen locked and unlocked, a Done checkmark that could reappear after it had cleared, and an audio tap that started when Spotify launched while music was switched off.</li>
+        </ul>
+      </div>
+    </article>
+
     <article class="release" data-marker="done">
       <div>
         <div class="release__version">0.2.4</div>
         <div class="release__date">31 August 2026</div>
-        <div class="release__tag">Current</div>
       </div>
       <div>
         <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
@@ -184,7 +198,7 @@
         <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
       </div>
       <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.2.4</a>
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.3.0</a>
         <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
       </div>
     </div>
