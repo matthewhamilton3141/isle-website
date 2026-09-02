@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Inter+Tight:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--sheet:#e7e9ec;--ink:#14161a;--graphite:#565c66;--quiet:#878e99;--hair:rgba(20,22,26,.13);
+--display:"Archivo","Helvetica Neue",sans-serif;--body:"Inter Tight",-apple-system,sans-serif;--mono:"Martian Mono",ui-monospace,Menlo,monospace;}
+*{box-sizing:border-box;margin:0}
+html,body{width:1200px;height:630px;overflow:hidden;background:var(--sheet);font-family:var(--body);color:var(--ink)}
+.bar{position:absolute;inset:0 0 auto 0;height:60px;background:#dee1e6;border-bottom:1px solid var(--hair);
+ display:flex;align-items:center;justify-content:space-between;padding:0 44px;font-size:22px;font-weight:500}
+.wordmark{display:flex;align-items:center;gap:10px}
+.wordmark svg{width:20px;height:20px}
+.bar .right{display:flex;gap:30px;color:var(--graphite);font-weight:400}
+.bar .right .v{font-family:var(--mono);font-size:17px;color:var(--quiet)}
+.lead{position:absolute;left:64px;right:64px;top:132px}
+h1{font-family:var(--display);font-variation-settings:"wdth" 108;font-weight:700;font-size:92px;letter-spacing:-.042em;line-height:.95;max-width:15ch}
+.lead p{margin-top:30px;font-size:28px;color:var(--graphite);max-width:46ch;line-height:1.3}
+.meta{position:absolute;left:64px;right:64px;bottom:34px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:17px;color:var(--quiet);letter-spacing:.01em}
+</style></head><body>
+<div class="bar">
+  <span class="wordmark"><svg viewBox="0 0 1024 1024" fill="currentColor"><circle cx="302" cy="302" r="72"/><circle cx="512" cy="302" r="72"/><circle cx="722" cy="302" r="72"/><circle cx="302" cy="512" r="72"/><circle cx="512" cy="512" r="72"/><circle cx="722" cy="512" r="72"/><circle cx="302" cy="722" r="72"/><circle cx="512" cy="722" r="72"/><circle cx="722" cy="722" r="72"/></svg>Isle</span>
+  <span class="right"><span>Install</span><span>Changelog</span><span>GitHub</span><span class="v">0.3.1</span></span>
+</div>
+<div class="lead">
+  <h1>A Dynamic Island for the MacBook notch.</h1>
+  <p>Now playing, moving with the real audio, and Claude Code status — opening on its own when Claude needs you.</p>
+</div>
+<div class="meta"><span>islenotch.vercel.app</span><span>macOS 14+ · universal · free · MIT</span></div>
+</body></html>

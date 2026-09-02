@@ -23,6 +23,12 @@ python3 -m http.server 8000
 - `assets/manual.css` — the layout of `index.html`, and nothing else
 - `assets/isle.js` — the island replica, the mode previews, the recording, and the marker catalogue
 - `assets/favicon.svg` — the app's 3×3 dot mark
+- `assets/card.png` — the 1200×630 link-preview card every page points at (`og:image`, `twitter:image`). Rendered from `scripts/card.html`:
+
+  ```bash
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --window-size=1200,630 --virtual-time-budget=6000 --screenshot=assets/card.png "file://$PWD/scripts/card.html"
+  ```
 
 ## The design
 
