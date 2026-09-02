@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Isle — a Dynamic Island for the MacBook notch</title>
-<meta name="description" content="Isle turns the dead space around the MacBook camera into a live island: what's playing in Spotify, with a real audio waveform, and what Claude Code is doing — opening on its own when Claude needs you.">
+<meta name="description" content="Isle turns the dead space around the MacBook camera into a live island: what's playing in Spotify, with a real audio waveform, what Claude Code is doing — opening on its own when Claude needs you — and, if you want them, today's agenda and a Pomodoro clock.">
 <meta name="theme-color" content="#e7e9ec">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Isle — a Dynamic Island for the MacBook notch">
@@ -67,7 +67,8 @@
       <p>
         Isle fills the dead space around the camera: what's playing, moving with the
         actual audio, and what Claude Code is doing — opening on its own when Claude
-        needs you. This page is the reference; the island in the bar above is live.
+        needs you. Switch them on and it also keeps today's agenda and a Pomodoro
+        clock there. This page is the reference; the island in the bar above is live.
       </p>
       <figure class="demo" style="margin-top: 26px">
         <div class="demo__stage">
@@ -126,7 +127,8 @@
         <p>
           Three modes, switched from the menu bar or from Settings. Only the subsystems
           the active mode needs are started, so a Claude-only install never asks Spotify
-          for anything.
+          for anything. Two further faces belong to no mode and are off until you ask —
+          <a href="#faces">below the modes</a>.
         </p>
 
         <div class="modes">
@@ -167,6 +169,51 @@
             </div>
           </div>
         </div>
+
+        <div class="faces" id="faces">
+          <p>
+            Hovering opens the panel; when more than one face is on, a switcher cycles
+            them. Music and Claude come with the mode. These two are opt-in, in
+            Settings, and each takes a seat in the collapsed island only while it has
+            something to say.
+          </p>
+          <div class="faces__grid">
+            <div>
+              <h3>Agenda</h3>
+              <p>
+                Today's date beside what's left of the day: events still to come or in
+                progress, and reminders due, each in its calendar's colour. Four lines
+                show at a time; swipe for the rest, or click the date to open Calendar.
+              </p>
+              <p>
+                An event borrows the island a few minutes before it starts — five by
+                default, from <em>at the start</em> up to thirty — and a reminder as it
+                comes due, then hands it straight back. All-day events and date-only
+                reminders are listed but never announced, and declined invitations are
+                left out. Calendar and Reminders are separate switches behind separate
+                permissions; either one alone is enough for the face.
+              </p>
+            </div>
+            <div>
+              <h3>Pomodoro</h3>
+              <p>
+                A progress ring with the clock inside it, the phase and cycle tally beside,
+                and play, skip and reset. Focus, short break and long break default to
+                25, 5 and 15 minutes with four focus intervals to a cycle; all of it is
+                adjustable, and a chime marks the end of each interval unless you turn it
+                off.
+              </p>
+              <p>
+                Once started, the ring and the remaining time sit in the collapsed island
+                — beside the music if something is playing, straddling the camera if not
+                — until you reset. A break rolls straight on; the next focus interval
+                waits to be started, so a break ending never puts you on the clock
+                without asking. The countdown is anchored to a wall-clock end time rather
+                than counted down, so it cannot drift.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -200,6 +247,8 @@
             <tr><td>The waveform</td><td>A Core Audio process tap on Spotify — only when set to Live; Animated never listens</td></tr>
             <tr><td>Device batteries</td><td>IOBluetooth for the connect, then one <code>system_profiler</code> read for the level</td></tr>
             <tr><td>Claude status</td><td>Hooks write one JSON file per session; Isle watches the directory</td></tr>
+            <tr><td>Today's agenda</td><td>EventKit, read only while a switch is on, and re-read when Calendar or Reminders change — the Agenda face lists what it read and nothing else</td></tr>
+            <tr><td>The Pomodoro clock</td><td>A wall-clock end date; the timer only notices when an interval is up, so a late tick can never make the digits drift</td></tr>
             <tr><td>The panel</td><td>Created once at full size; only the contents animate, so it never fights the window server</td></tr>
           </tbody>
         </table>
@@ -215,6 +264,7 @@
             <tr><td>Waveform</td><td>macOS 14.4 or newer, for the Core Audio process-tap API</td></tr>
             <tr><td>Music source</td><td>Spotify</td></tr>
             <tr><td>Claude source</td><td>Claude Code</td></tr>
+            <tr><td>Agenda</td><td>Calendar or Reminders permission — one or both; Isle asks only for the switches you turn on</td></tr>
             <tr><td>Notch</td><td>Not required — without one, Isle draws against the top edge</td></tr>
             <tr><td>Building</td><td>Xcode 16 or newer</td></tr>
           </tbody>

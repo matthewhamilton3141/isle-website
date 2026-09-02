@@ -32,7 +32,7 @@
 
   /* --- BEGIN GENERATED (scripts/sync-from-swift.mjs) --------- */
   var SWIFT = {
-    /* Isle 0.2.4 — MarkerDesign.swift, MarkerKind.swift, NotchShape.swift, NotchMetrics.swift */
+    /* Isle 0.3.2 — MarkerDesign.swift, MarkerKind.swift, NotchShape.swift, NotchMetrics.swift */
     dimension: 5,
     notch: { topCornerRadius: 8, bottomCornerRadius: 14 },
     markers: {

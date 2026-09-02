@@ -122,7 +122,7 @@
       <div>
         <h3>Choose what Isle may ask for</h3>
         <p>
-          The next screen lists the two features that need a macOS permission, both
+          The next screen lists the features that need a macOS permission, all
           ticked. Nothing starts until you press Continue, so Isle only ever asks for
           what you left ticked — a Claude-only install never sees a Bluetooth prompt
           it didn't choose.
@@ -143,6 +143,12 @@
                 <td><em>Bluetooth</em>, as soon as you continue.</td>
                 <td>Isle never looks.</td>
               </tr>
+              <tr>
+                <td>Events &amp; reminders</td>
+                <td>An Agenda face listing what's left of today, and the island showing each event shortly before it starts and each reminder as it comes due.</td>
+                <td><em>Calendars</em> and <em>Reminders</em>, as soon as you continue.</td>
+                <td>Isle never looks. Settings can switch the two on separately later.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -153,8 +159,8 @@
         </p>
         <p>
           All of these can be changed later in <strong>System Settings → Privacy &amp;
-          Security</strong>, and the waveform and device switches live in Isle's own
-          Settings too. Isle is signed without an Apple Developer ID, so macOS ties its
+          Security</strong>, and the waveform, device, calendar and reminder switches
+          live in Isle's own Settings too. Isle is signed without an Apple Developer ID, so macOS ties its
           answers to the exact build and asks again after an update. Isle runs as a menu
           bar app with no Dock icon.
         </p>
@@ -179,7 +185,7 @@
           <tbody>
             <tr><td>Toggle Notch</td><td>Show or hide the island</td></tr>
             <tr><td>Pop out notch for alerts</td><td>Whether Claude alerts expand the island on their own</td></tr>
-            <tr><td>Settings…</td><td>Mode, music options, Claude hook, updates</td></tr>
+            <tr><td>Settings…</td><td>Mode, music options, Claude hook, power, calendar and reminders, Pomodoro, updates</td></tr>
             <tr><td>Setup…</td><td>Re-run the first-launch mode and permissions picker</td></tr>
             <tr><td>Check for Updates…</td><td>Check for a new version immediately</td></tr>
             <tr><td>Marker Editor…</td><td>Design the dot-matrix markers for each Claude state</td></tr>
@@ -229,6 +235,26 @@
           <p>
             Automation permission for Spotify was declined. Re-enable Isle under
             <strong>System Settings → Privacy &amp; Security → Automation</strong>.
+          </p>
+        </details>
+        <details>
+          <summary>No event or reminder ever shows</summary>
+          <p>
+            Check the two switches under <strong>Settings → Calendar &amp; Reminders</strong>.
+            Each says outright if its permission was declined, with a button to the right
+            Privacy pane, and the Agenda face says so too. The island only announces a
+            moment: all-day events and reminders with a date but no time are listed on the
+            Agenda face but never announced, and invitations you declined are skipped
+            entirely.
+          </p>
+        </details>
+        <details>
+          <summary>The Pomodoro face isn't there</summary>
+          <p>
+            It is off until switched on under <strong>Settings → Pomodoro</strong>, and
+            switching it off again resets any timer that was running. A fresh timer stays
+            out of the collapsed island until you start it — a 25:00 that never moves
+            says nothing.
           </p>
         </details>
         <details>
