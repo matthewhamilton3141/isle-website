@@ -29,7 +29,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html" aria-current="page">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.3.1</span>
+    <span class="bar__version">0.3.2</span>
   </div>
 </nav>
 
@@ -37,7 +37,7 @@
 
   <header class="page-head wrap" data-marker="done">
     <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
-    <h1>Ten releases so far.</h1>
+    <h1>Eleven releases so far.</h1>
     <p class="lede">
       Isle checks for updates on launch and installs them itself, verified against a
       signed manifest. Nothing here needs a re-download once you're running.
@@ -46,11 +46,25 @@
 
   <section class="chapter chapter--open wrap">
 
+    <article class="release" data-marker="waitingInput">
+      <div>
+        <div class="release__version">0.3.2</div>
+        <div class="release__date">2 September 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>Setup asks before macOS does.</strong> A new step lists the two features that need a permission — the live waveform and device batteries — both ticked, each with its consequence stated. Nothing starts until you continue, so Isle only asks for what you left ticked, and a Claude-only install never sees a Bluetooth prompt.</li>
+          <li><strong>The waveform is Live, Animated or Off.</strong> Animated runs the pattern without ever listening, so macOS never asks. Off gives the space back to the album cover. In Settings → Music, where a button opens the Audio Recording pane directly; the device switch gets the same for Bluetooth.</li>
+          <li>Previously the island started before the welcome screen had been read, so the Bluetooth prompt fired in every mode and the audio prompt could arrive while Setup was still open.</li>
+        </ul>
+      </div>
+    </article>
+
     <article class="release" data-marker="done">
       <div>
         <div class="release__version">0.3.1</div>
         <div class="release__date">2 September 2026</div>
-        <div class="release__tag">Current</div>
       </div>
       <div>
         <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
@@ -210,7 +224,7 @@
         <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
       </div>
       <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.3.1</a>
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.3.2</a>
         <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
       </div>
     </div>
