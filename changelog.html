@@ -43,7 +43,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html" aria-current="page">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.4.1</span>
+    <span class="bar__version">0.4.2</span>
   </div>
 </nav>
 
@@ -51,7 +51,7 @@
 
   <header class="page-head wrap" data-marker="done">
     <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
-    <h1>Thirteen releases so far.</h1>
+    <h1>Fourteen releases so far.</h1>
     <p class="lede">
       Isle checks for updates on launch and installs them itself, verified against a
       signed manifest. Nothing here needs a re-download once you're running.
@@ -62,9 +62,21 @@
 
     <article class="release" data-marker="working">
       <div>
+        <div class="release__version">0.4.2</div>
+        <div class="release__date">15 September 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>The waveform no longer freezes when your output device changes.</strong> The audio tap is read through a device built on whatever the output was at the time, and when that device went away — AirPods disconnecting, a display's speakers taking over — the bars sat on their last frame until a relaunch or screen lock rebuilt it. Isle now watches the default output device and rebuilds the tap the moment it changes.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="release" data-marker="working">
+      <div>
         <div class="release__version">0.4.1</div>
         <div class="release__date">3 September 2026</div>
-        <div class="release__tag">Current</div>
       </div>
       <div>
         <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
@@ -267,7 +279,7 @@
         <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
       </div>
       <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.1</a>
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.2</a>
         <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
       </div>
     </div>
