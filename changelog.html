@@ -43,7 +43,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html" aria-current="page">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.4.2</span>
+    <span class="bar__version">0.4.3</span>
   </div>
 </nav>
 
@@ -51,7 +51,7 @@
 
   <header class="page-head wrap" data-marker="done">
     <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
-    <h1>Fourteen releases so far.</h1>
+    <h1>Fifteen releases so far.</h1>
     <p class="lede">
       Isle checks for updates on launch and installs them itself, verified against a
       signed manifest. Nothing here needs a re-download once you're running.
@@ -60,11 +60,23 @@
 
   <section class="chapter chapter--open wrap">
 
+    <article class="release" data-marker="done">
+      <div>
+        <div class="release__version">0.4.3</div>
+        <div class="release__date">25 September 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>The waveform wakes the moment music resumes.</strong> Isle stands the audio tap down once a pause runs past a few seconds, and what brought it back was a play/pause reading that only refreshes every three seconds while the island is collapsed. So a play pressed in Spotify itself, on a media key or from another device could leave the bars resting as dots for up to three seconds while the music was already going. Isle now takes the now-playing feed's own push as the cue to look at once, and the bars wake in about a third of a second.</li>
+        </ul>
+      </div>
+    </article>
+
     <article class="release" data-marker="working">
       <div>
         <div class="release__version">0.4.2</div>
         <div class="release__date">15 September 2026</div>
-        <div class="release__tag">Current</div>
       </div>
       <div>
         <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
@@ -279,7 +291,7 @@
         <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
       </div>
       <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.2</a>
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.3</a>
         <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
       </div>
     </div>
