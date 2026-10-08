@@ -43,7 +43,7 @@
     <a href="install.html">Install</a>
     <a href="changelog.html" aria-current="page">Changelog</a>
     <a href="https://github.com/matthewhamilton3141/isle">GitHub</a>
-    <span class="bar__version">0.4.3</span>
+    <span class="bar__version">0.4.4</span>
   </div>
 </nav>
 
@@ -51,7 +51,7 @@
 
   <header class="page-head wrap" data-marker="done">
     <div class="state"><span data-dots="done" aria-hidden="true"></span>Changelog</div>
-    <h1>Fifteen releases so far.</h1>
+    <h1>Sixteen releases so far.</h1>
     <p class="lede">
       Isle checks for updates on launch and installs them itself, verified against a
       signed manifest. Nothing here needs a re-download once you're running.
@@ -60,11 +60,23 @@
 
   <section class="chapter chapter--open wrap">
 
+    <article class="release" data-marker="working">
+      <div>
+        <div class="release__version">0.4.4</div>
+        <div class="release__date">7 October 2026</div>
+        <div class="release__tag">Current</div>
+      </div>
+      <div>
+        <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
+          <li><strong>The Claude island stays on a running turn.</strong> While Claude wrote between tool calls — most visibly through a long final answer — the island could drop to idle and only come back with the next tool call. Isle double-checks a working session against Claude Code's own record of whether it's busy, and Claude Code now updates that record in place, which Isle's watch on the folder never saw. So a session that was idle when Isle last looked stayed idle to Isle for the whole turn. Isle now re-reads those records before it decides what the island shows.</li>
+        </ul>
+      </div>
+    </article>
+
     <article class="release" data-marker="done">
       <div>
         <div class="release__version">0.4.3</div>
         <div class="release__date">25 September 2026</div>
-        <div class="release__tag">Current</div>
       </div>
       <div>
         <ul class="feature-list" style="--accent: var(--blue); margin-top: 0">
@@ -291,7 +303,7 @@
         <p class="lede" style="margin-top: 20px">Check for Updates… in the menu bar picks up the latest release.</p>
       </div>
       <div class="hero__actions" style="margin-top: 0">
-        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.3</a>
+        <a class="btn btn--solid" href="https://github.com/matthewhamilton3141/isle/releases/latest">Download 0.4.4</a>
         <a class="btn btn--line" href="https://github.com/matthewhamilton3141/isle/commits/main">Full commit history</a>
       </div>
     </div>
